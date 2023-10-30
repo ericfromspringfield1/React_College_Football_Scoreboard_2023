@@ -37,5 +37,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://reimagined-waffle-7569r9wvr93ww96-5000.app.github.dev/"
+  "proxy": "http://localhost:5000"
 }

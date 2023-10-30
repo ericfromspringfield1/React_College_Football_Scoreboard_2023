@@ -7,7 +7,7 @@ function Scoreboard() {
 
   useEffect(() => {
     const fetchData = async () => {
-    const scoreboardURL = 'https://reimagined-waffle-7569r9wvr93ww96-5000.app.github.dev/'
+    const scoreboardURL = 'http://localhost:5000'
       try {
         const response = await axios.get(scoreboardURL);
         setGames(response.data);
