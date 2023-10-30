@@ -13,7 +13,8 @@ CORS(app)  # This will enable CORS for all routes
 @app.route('/proxy', methods=['GET'])
 def proxy():
     # Get the target URL from the query parameter
-    target_url = request.args.get('url')
+    url = 'http://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard'
+    target_url = request.args.get(url)
 
     if not target_url:
         return jsonify({'error': 'No URL provided'}), 400

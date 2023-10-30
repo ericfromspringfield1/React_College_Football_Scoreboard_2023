@@ -7,7 +7,7 @@ function Scoreboard() {
 
   useEffect(() => {
     const fetchData = async () => {
-    const scoreboardURL = 'http://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard'
+    const scoreboardURL = 'https://reimagined-waffle-7569r9wvr93ww96-5000.app.github.dev/'
       try {
         const response = await axios.get(scoreboardURL);
         setGames(response.data);
