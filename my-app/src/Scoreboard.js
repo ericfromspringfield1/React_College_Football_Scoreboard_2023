@@ -33,9 +33,11 @@ function Scoreboard() {
         homeTeam={game.competitions[0].competitors[0].team.displayName}
         homeScore={game.competitions[0].competitors[0].score} 
         homeColor={game.competitions[0].competitors[0].team.color}
+        homeLogo={game.competitions[0].competitors[0].team.logo}
         awayTeam={game.competitions[0].competitors[1].team.displayName}
         awayScore={game.competitions[0].competitors[1].score}
         awayColor={game.competitions[0].competitors[1].team.color}
+        awayLogo={game.competitions[0].competitors[1].team.logo}
         gameId={game.id}
         />
       ))}
@@ -44,14 +46,14 @@ function Scoreboard() {
 }
 
 
-function GameCard({ homeTeam, homeScore, homeColor, awayTeam, awayScore, awayColor, gameId }) {
+function GameCard({ homeTeam, homeScore, homeColor, homeLogo, awayTeam, awayScore, awayColor, awayLogo, gameId }) {
   const homeTeamColor = `#${homeColor}`
   const awayTeamColor = `#${awayColor}`
 
   return (
     <div>
-      <h3 style={{backgroundColor: awayTeamColor}} className="awayTeamScoreboard">{awayTeam} {awayScore}</h3>
-      <h3 style={{backgroundColor: homeTeamColor}} className="homeTeamScoreboard">{homeTeam} {homeScore}</h3>
+      <h3 style={{backgroundColor: awayTeamColor}} className="awayTeamScoreboard"><img src={awayLogo} width={"45"} height={"45"} align={"center"} alt="teamLogo"></img>{awayTeam} {awayScore}</h3>
+      <h3 style={{backgroundColor: homeTeamColor}} className="homeTeamScoreboard"><img src={homeLogo} width={"45"} height={"45"} align={"center"} alt="teamLogo"></img>{homeTeam} {homeScore}</h3>
       {/* ... other details */}
       {/* If you also have a game ID or link, you can uncomment the next line */}
       <Link to={`/${gameId}`}><button>View Details</button></Link>
