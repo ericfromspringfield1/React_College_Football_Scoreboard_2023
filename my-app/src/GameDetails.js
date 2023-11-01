@@ -23,11 +23,14 @@ function GameDetails() {
     fetchData();
   }, [gameId]);
 
+  // variables for properties like team name, score, etc. 
   if (!gameDetails) return <div>Loading...</div>;
-
+  const awayTeam = gameDetails.teams[0].team.displayName 
+  const homeTeam = gameDetails.teams[1].team.displayName
+  
   return (
     <div>
-      <h2 >{gameDetails.teams[0].team.displayName} vs {gameDetails.teams[1].team.displayName}</h2>
+      <h2>{awayTeam} vs {homeTeam}</h2>
       {/* ... other details */}
     </div>
   );
