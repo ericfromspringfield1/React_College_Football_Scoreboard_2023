@@ -50,8 +50,8 @@ function GameCard({ homeTeam, homeScore, homeColor, awayTeam, awayScore, awayCol
 
   return (
     <div>
-      <h3 style={{backgroundColor: awayTeamColor}}>{awayTeam} {awayScore}</h3>
-      <h3 style={{backgroundColor: homeTeamColor}}>{homeTeam} {homeScore}</h3>
+      <h3 style={{backgroundColor: awayTeamColor}} className="awayTeamScoreboard">{awayTeam} {awayScore}</h3>
+      <h3 style={{backgroundColor: homeTeamColor}} className="homeTeamScoreboard">{homeTeam} {homeScore}</h3>
       {/* ... other details */}
       {/* If you also have a game ID or link, you can uncomment the next line */}
       <Link to={`/${gameId}`}><button>View Details</button></Link>
