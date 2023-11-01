@@ -25,6 +25,11 @@ function GameDetails() {
 
   // variables for properties like team name, score, etc. 
   if (!gameDetails) return <div>Loading...</div>;
+  const venue = gameDetails.gameInfo.venue.fullName
+  const venuePhoto = gameDetails.gameInfo.venue.images[0].href
+  const venuePhoto2 = gameDetails.gameInfo.venue.images[1].href
+  const dateTime = gameDetails.header.competitions[0].status.type.detail
+  const network = gameDetails.header.competitions[0].broadcasts[0].media.shortName
   const awayTeam = gameDetails.header.competitions[0].competitors[1].team.displayName 
   const awayScore = gameDetails.header.competitions[0].competitors[1].score
   const awayColor = gameDetails.header.competitions[0].competitors[1].team.color
@@ -39,6 +44,8 @@ function GameDetails() {
   return (
     
     <div>
+      <h2>{venue} {dateTime} {network}</h2>
+      <img src={venuePhoto2}></img>
       <h2 style={{color: awayTeamColor}} className="awayTeamGame"><img src={awayLogo} width={"45"} height={"45"} align={"center"} alt="teamLogo"></img> {awayTeam} {awayScore}</h2>
       <h2 style={{color: homeTeamColor}} className="homeTeamGame"><img src={homeLogo} width={"45"} height={"45"} align={"center"} alt="teamLogo"></img>{homeTeam} {homeScore}</h2>
       {/* ... other details */}
