@@ -1,6 +1,8 @@
 // src/Scoreboard.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 
 function Scoreboard() {
@@ -46,7 +48,8 @@ function GameCard({ awayTeam, homeTeam, gameId }) {
       <h3>{awayTeam} vs {homeTeam}</h3>
       {/* ... other details */}
       {/* If you also have a game ID or link, you can uncomment the next line */}
-      <a href={`/game/${gameId}`}>View Details</a>
+      <Link to={`/${gameId}`}>View Details</Link>
+
     </div>
   );
 }

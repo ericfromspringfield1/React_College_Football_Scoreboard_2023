@@ -12,9 +12,10 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Scoreboard />} />
-        <Route path="/gameId" element={<GameDetails />} />
+        <Route path="/:gameId" element={<GameDetails />} />
       </Routes>
     </Router>
+  
   );
 }
 

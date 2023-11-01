@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
-function GameDetails({ match }) {
-  console.log(match)
+function GameDetails() {
   const [gameDetails, setGameDetails] = useState(null);
+  const { gameId } = useParams();
+  console.log(gameId);
 
   useEffect(() => {
     const fetchData = async () => {
-      let gameUrl = `https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=${match.params.gameId}`;
+      let gameUrl = `https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=${gameId}`;
       // let gameUrl = `https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401520375`;
       try {
         const response = await axios.get(gameUrl);
@@ -19,7 +21,7 @@ function GameDetails({ match }) {
     };
 
     fetchData();
-  }, []);
+  }, [gameId]);
 
   if (!gameDetails) return <div>Loading...</div>;
 
