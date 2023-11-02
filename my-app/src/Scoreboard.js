@@ -34,10 +34,12 @@ function Scoreboard() {
         homeTeam={game.competitions[0].competitors[0].team.displayName}
         homeScore={game.competitions[0].competitors[0].score} 
         homeColor={game.competitions[0].competitors[0].team.color}
+        homeAltColor={game.competitions[0].competitors[0].team.alternateColor}
         homeLogo={game.competitions[0].competitors[0].team.logo}
         awayTeam={game.competitions[0].competitors[1].team.displayName}
         awayScore={game.competitions[0].competitors[1].score}
         awayColor={game.competitions[0].competitors[1].team.color}
+        awayAltColor={game.competitions[0].competitors[1].team.color}
         awayLogo={game.competitions[0].competitors[1].team.logo}
         gameId={game.id}
         />

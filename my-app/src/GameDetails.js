@@ -30,6 +30,7 @@ function GameDetails() {
   const venuePhoto2 = gameDetails?.gameInfo?.venue?.images[1]?.href
   const dateTime = gameDetails.header.competitions[0].status.type.detail
   const network = gameDetails.header.competitions[0].broadcasts[0].media.shortName
+  const weather = gameDetails.gameInfo.weather.temperature
 
   const awayLogo = gameDetails.boxscore.teams[0].team.logo
   const awayTeam = gameDetails.header.competitions[0].competitors[1].team.displayName 
@@ -54,8 +55,8 @@ function GameDetails() {
   return (
     
     <div>
+      {/* <img src={venuePhoto2} alt={venue}></img> */}
       <h2>{venue} {dateTime} {network}</h2>
-      <img src={venuePhoto2} alt={venue}></img>
       <h2 style={{color: awayTeamColor}} className="awayTeamGame"><img src={awayLogo} width={"100"} height={"100"} align={"center"} alt="teamLogo"></img>{awayRank} {awayTeam} ({awayRecord}, {awayConferenceRecord}) {awayScore}</h2>
       <h2 style={{color: homeTeamColor}} className="homeTeamGame"><img src={homeLogo} width={"100"} height={"100"} align={"center"} alt="teamLogo"></img>{homeRank} {homeTeam} ({homeRecord}, {homeConferenceRecord}) {homeScore}</h2>
       {/* ... other details */}
