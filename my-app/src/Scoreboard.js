@@ -8,8 +8,8 @@ function Scoreboard() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const scoreboardURL = 'https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard'
-      // const scoreboardURL = 'https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?limit=500&dates=20231024-20231130'
+      // const scoreboardURL = 'https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard'
+      const scoreboardURL = 'https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?limit=500&dates=20231102'
       // const scoreboardURL = '/proxy'  *** IF USING FLASK AS BACKEND
       try {
         const response = await axios.get(scoreboardURL);

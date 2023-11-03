@@ -7,9 +7,10 @@ function GameDetails() {
   const { gameId } = useParams();
   console.log(gameId);
 
+  
   useEffect(() => {
+    let gameUrl = `https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=${gameId}`;
     const fetchData = async () => {
-      let gameUrl = `https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=${gameId}`;
       // let gameUrl = `https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401520375`;
       try {
         const response = await axios.get(gameUrl);
@@ -51,9 +52,8 @@ function GameDetails() {
   
   const awayTeamColor = `#${awayColor}`
   const homeTeamColor = `#${homeColor}`
-  
+
   return (
-    
     <div>
       {/* <img src={venuePhoto2} alt={venue}></img> */}
       <h2>{venue} {dateTime} {network}</h2>
