@@ -22,7 +22,17 @@ function GameDetails() {
     };
 
     fetchData();
-  }, [gameId]);
+
+    // Fetch Data every 20 seconds 
+    const interval=setInterval(()=>{
+      fetchData();
+      },20000)
+ 
+ 
+     return()=>clearInterval(interval)
+    
+ },[])
+  
 
   // variables for properties like team name, score, etc. 
   if (!gameDetails) return <div>Loading...</div>;
@@ -34,6 +44,8 @@ function GameDetails() {
   // const weather = gameDetails.gameInfo.weather.temperature
   const city = gameDetails.gameInfo.venue.address.city
   const state = gameDetails.gameInfo.venue.address.state
+  const lastPlayIndex = gameDetails?.drives?.current?.plays?.length - 1
+  const currentPlay = gameDetails?.drives?.current?.plays[lastPlayIndex]?.text
 
   const awayLogo = gameDetails.boxscore.teams[0].team.logo
   const awayAltLogo = gameDetails.header.competitions[0].competitors[1].team.logos[1].href
@@ -65,11 +77,12 @@ function GameDetails() {
       <hr style={{color: awayTeamColor, borderBlockColor: awayTeamColor}}></hr>
       <h2 style={{textAlign: "center", backgroundColor: homeTeamColor, padding: "20px", color: "whitesmoke", fontSize: "2em"}}>{venue} | {city}, {state}</h2>
       <hr style={{color: awayTeamColor, borderBlockColor: awayTeamColor}}></hr>
+      {/* Add conditional for which team has possession */}
+      <h5>{currentPlay}</h5> 
       <hr style={{color: awayTeamColor, borderBlockColor: awayTeamColor}}></hr>
 
       <h2 style={{color: awayTeamColor, marginLeft: "5%"}} className="awayTeamGame">({awayRecord}, {awayConferenceRecord}) {awayRank} {awayTeam} {awayScore}</h2>
       <hr style={{color: awayTeamColor, borderBlockColor: awayTeamColor}}></hr>
-
       <hr style={{color: homeTeamColor, borderBlockColor: homeTeamColor}}></hr>
       <h2 style={{color: homeTeamColor, marginLeft: "5%"}} className="homeTeamGame">({homeRecord}, {homeConferenceRecord}) {homeRank} {homeTeam} {homeScore}</h2>
       <hr style={{color: homeTeamColor, borderBlockColor: homeTeamColor}}></hr>

@@ -8,7 +8,7 @@ function Scoreboard() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const scoreboardURL = 'https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?limit=500&dates=20231102-20231105'
+      const scoreboardURL = 'https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?limit=500&dates=20231104-20231105'
       // const scoreboardURL = 'https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard'
       // const scoreboardURL = '/proxy'  *** IF USING FLASK AS BACKEND
       try {
@@ -24,7 +24,16 @@ function Scoreboard() {
     };
   
     fetchData();
-  }, []);
+
+    // Fetch Data every 20 seconds 
+    const interval=setInterval(()=>{
+      fetchData();
+      },20000)
+ 
+ 
+     return()=>clearInterval(interval)
+    
+ },[])
 
   // Create list of variables so you can just use the variables instead of writing out homeTeam, etc over and over again.
   return (
@@ -36,12 +45,15 @@ function Scoreboard() {
         homeColor={game.competitions[0].competitors[0].team.color}
         homeAltColor={game.competitions[0].competitors[0].team.alternateColor}
         homeLogo={game.competitions[0].competitors[0].team.logo}
+
         awayTeam={game.competitions[0].competitors[1].team.displayName}
         awayScore={game.competitions[0].competitors[1].score}
         awayColor={game.competitions[0].competitors[1].team.color}
         awayAltColor={game.competitions[0].competitors[1].team.color}
         awayLogo={game.competitions[0].competitors[1].team.logo}
+
         gameId={game.id}
+        gameStatus={game.status.type.detail}
         />
       ))}
     </div>
@@ -49,12 +61,13 @@ function Scoreboard() {
 }
 
 
-function GameCard({ homeTeam, homeScore, homeColor, homeLogo, awayTeam, awayScore, awayColor, awayLogo, gameId }) {
+function GameCard({ homeTeam, homeScore, homeColor, homeLogo, awayTeam, awayScore, awayColor, awayLogo, gameId, gameStatus }) {
   const homeTeamColor = `#${homeColor}`
   const awayTeamColor = `#${awayColor}`
 
   return (
     <div>
+      <h5>{gameStatus}</h5>
       <h3 style={{backgroundColor: awayTeamColor}} className="awayTeamScoreboard"><img src={awayLogo} width={"45"} height={"45"} align={"center"} alt="teamLogo"></img>{awayTeam} {awayScore}</h3>
       <h3 style={{backgroundColor: homeTeamColor}} className="homeTeamScoreboard"><img src={homeLogo} width={"45"} height={"45"} align={"center"} alt="teamLogo"></img>{homeTeam} {homeScore}</h3>
       {/* ... other details */}
