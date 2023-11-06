@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import './GameDetails.css'; 
 
 function Scoreboard() {
   const [games, setGames] = useState([]);
@@ -37,7 +38,7 @@ function Scoreboard() {
 
   // Create list of variables so you can just use the variables instead of writing out homeTeam, etc over and over again.
   return (
-    <div>
+    <div className="scoreboard-container">
       {games.map(game => (
         <GameCard key={game.id} 
         homeTeam={game.competitions[0].competitors[0].team.displayName}
@@ -66,15 +67,20 @@ function GameCard({ homeTeam, homeScore, homeColor, homeLogo, awayTeam, awayScor
   const awayTeamColor = `#${awayColor}`
 
   return (
-    <div>
-      <h5>{gameStatus}</h5>
-      <h3 style={{backgroundColor: awayTeamColor}} className="awayTeamScoreboard"><img src={awayLogo} width={"45"} height={"45"} align={"center"} alt="teamLogo"></img>{awayTeam} {awayScore}</h3>
-      <h3 style={{backgroundColor: homeTeamColor}} className="homeTeamScoreboard"><img src={homeLogo} width={"45"} height={"45"} align={"center"} alt="teamLogo"></img>{homeTeam} {homeScore}</h3>
-      {/* ... other details */}
-      {/* If you also have a game ID or link, you can uncomment the next line */}
-      <Link to={`/${gameId}`}><button>View Details</button></Link>
-
-    </div>
+    <div className="game-card">
+  <div className="game-status">{gameStatus}</div>
+  <div className="team-scoreboard awayTeamScoreboard" style={{'--away-color': awayTeamColor}}>
+    <img src={awayLogo} className="team-logo" alt="team logo" />
+    <span className="team-name-score">{awayTeam} {awayScore}</span>
+  </div>
+  <div className="team-scoreboard homeTeamScoreboard" style={{'--home-color': homeTeamColor}}>
+    <img src={homeLogo} className="team-logo" alt="team logo" />
+    <span className="team-name-score">{homeTeam} {homeScore}</span>
+  </div>
+  <Link to={`/${gameId}`}>
+    <button className="view-details-button">View Details</button>
+  </Link>
+</div>
   );
 }
 export default Scoreboard;

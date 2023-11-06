@@ -24,27 +24,6 @@
   color: white;
 }
 
-.awayTeamScoreboard {
-  color: whitesmoke;
-  padding: 3pt;
-  margin-right: 50%;
-}
-
-
-.homeTeamScoreboard {
-  padding: 3pt;
-  margin-right: 50%;
-  color: whitesmoke;
-}
-
-.awayTeamGame {
-  font-size: 2em;
-}
-
-
-.homeTeamGame {
-  font-size: 2em;
-}
 
 .App-link {
   color: #61dafb;
