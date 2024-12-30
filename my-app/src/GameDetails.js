@@ -9,9 +9,9 @@ function GameDetails() {
 
   
   useEffect(() => {
-    let gameUrl = `https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=${gameId}`;
+    let gameUrl = `http://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=${gameId}`;
     const fetchData = async () => {
-      // let gameUrl = `https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401520375`;
+      // let gameUrl = `http://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401520375`;
       try {
         const response = await axios.get(gameUrl);
         setGameDetails(response.data);
