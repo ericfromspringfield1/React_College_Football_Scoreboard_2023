@@ -1,3 +1,5 @@
+// This won't run on state machine. Blocked by crowdstrike due to category being sports 
+
 // // Updated src/App.js to incorporate state management for updating only changed elements
 // import './App.css';
 
